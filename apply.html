@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMBA.RP | Apply</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Scripts -->
+    <script defer src="js/lang.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/form-validator.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-lion"></i>
+                    <span>SIMBA<span class="highlight">.RP</span></span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link" data-lang="nav_home">Home</a>
+                <a href="apply.html" class="nav-link active" data-lang="nav_apply">Apply</a>
+                <a href="rules.html" class="nav-link" data-lang="nav_rules">Rules</a>
+                <a href="#features" class="nav-link" data-lang="nav_features">Features</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="language-switcher" id="languageSwitcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
+                
+                <a href="#" class="btn-discord" data-lang="nav_discord">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Application Section -->
+    <section class="application-section">
+        <div class="container">
+            <div class="application-header">
+                <h1 class="page-title" data-lang="apply_title">Join SIMBA.RP</h1>
+                <p class="page-subtitle" data-lang="apply_subtitle">
+                    Complete the application form below to join our roleplay community.
+                    All applications are reviewed manually by our staff team.
+                </p>
+            </div>
+
+            <!-- Application Steps -->
+            <div class="application-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 data-lang="step1_title">Read Rules</h3>
+                        <p data-lang="step1_desc">Understand our community rules</p>
+                    </div>
+                </div>
+                
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 data-lang="step2_title">Fill Form</h3>
+                        <p data-lang="step2_desc">Complete the application</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 data-lang="step3_title">Review</h3>
+                        <p data-lang="step3_desc">Staff review process</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 data-lang="step4_title">Join Server</h3>
+                        <p data-lang="step4_desc">Start roleplaying</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Form -->
+            <div class="application-form-wrapper">
+                <form id="applicationForm" class="application-form">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3 data-lang="form_personal_title">Personal Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="discordUsername" data-lang="form_discord">
+                                Discord Username *
+                            </label>
+                            <input 
+                                type="text" 
+                                id="discordUsername" 
+                                name="discordUsername"
+                                placeholder="username#1234"
+                                required
+                                data-validate="discord"
+                            >
+                            <div class="form-hint" data-lang="form_discord_hint">
+                                Must include tag (e.g., username#1234)
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="age" data-lang="form_age">Age *</label>
+                                <input 
+                                    type="number" 
+                                    id="age" 
+                                    name="age"
+                                    min="16"
+                                    max="60"
+                                    required
+                                    data-validate="age"
+                                >
+                                <div class="form-hint" data-lang="form_age_hint">
+                                    Must be 16 or older
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timezone" data-lang="form_timezone">Timezone</label>
+                                <select id="timezone" name="timezone">
+                                    <option value="">Select your timezone</option>
+                                    <option value="UTC-12">UTC-12</option>
+                                    <option value="UTC-8">UTC-8 (PST)</option>
+                                    <option value="UTC-5">UTC-5 (EST)</option>
+                                    <option value="UTC+0">UTC+0 (GMT)</option>
+                                    <option value="UTC+1">UTC+1 (CET)</option>
+                                    <option value="UTC+3">UTC+3 (AST)</option>
+                                    <option value="UTC+8">UTC+8 (CST)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RolePlay Experience -->
+                    <div class="form-section">
+                        <h3 data-lang="form_experience_title">RolePlay Experience</h3>
+                        
+                        <div class="form-group">
+                            <label for="experienceLevel" data-lang="form_experience_level">
+                                Experience Level *
+                            </label>
+                            <select id="experienceLevel" name="experienceLevel" required>
+                                <option value="">Select your experience level</option>
+                                <option value="beginner" data-lang="exp_beginner">Beginner (0-6 months)</option>
+                                <option value="intermediate" data-lang="exp_intermediate">Intermediate (6-24 months)</option>
+                                <option value="advanced" data-lang="exp_advanced">Advanced (2+ years)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="previousCommunities" data-lang="form_previous_communities">
+                                Previous Communities
+                            </label>
+                            <input 
+                                type="text" 
+                                id="previousCommunities" 
+                                name="previousCommunities"
+                                placeholder="Community names, if any"
+                            >
+                            <div class="form-hint" data-lang="form_previous_hint">
+                                Separate multiple communities with commas
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="characterConcept" data-lang="form_character_concept">
+                                Character Concept *
+                            </label>
+                            <textarea 
+                                id="characterConcept" 
+                                name="characterConcept"
+                                rows="4"
+                                placeholder="Describe your character's background, personality, and goals..."
+                                required
+                                minlength="100"
+                                data-validate="minLength"
+                            ></textarea>
+                            <div class="form-counter">
+                                <span id="charCount">0</span>/500 characters
+                            </div>
+                            <div class="form-hint" data-lang="form_character_hint">
+                                Minimum 100 characters required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Questions -->
+                    <div class="form-section">
+                        <h3 data-lang="form_additional_title">Additional Questions</h3>
+                        
+                        <div class="form-group">
+                            <label for="whyJoin" data-lang="form_why_join">
+                                Why do you want to join SIMBA.RP? *
+                            </label>
+                            <textarea 
+                                id="whyJoin" 
+                                name="whyJoin"
+                                rows="3"
+                                placeholder="What interests you about our community?"
+                                required
+                                minlength="50"
+                            ></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="roleplayStyle" data-lang="form_roleplay_style">
+                                What's your preferred roleplay style?
+                            </label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="roleplayStyle" value="serious">
+                                    <span data-lang="style_serious">Serious/Law Enforcement</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="roleplayStyle" value="criminal">
+                                    <span data-lang="style_criminal">Criminal/Underworld</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="roleplayStyle" value="civilian">
+                                    <span data-lang="style_civilian">Civilian/Business</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="roleplayStyle" value="emergency">
+                                    <span data-lang="style_emergency">Emergency Services</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="availability" data-lang="form_availability">
+                                Average weekly playtime *
+                            </label>
+                            <select id="availability" name="availability" required>
+                                <option value="">Select your availability</option>
+                                <option value="0-5" data-lang="avail_low">0-5 hours</option>
+                                <option value="5-15" data-lang="avail_medium">5-15 hours</option>
+                                <option value="15-30" data-lang="avail_high">15-30 hours</option>
+                                <option value="30+" data-lang="avail_very_high">30+ hours</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Agreement -->
+                    <div class="form-section agreement-section">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeRules" name="agreeRules" required>
+                                <span data-lang="form_agree_rules">
+                                    I have read and agree to follow all server rules *
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                <span data-lang="form_agree_terms">
+                                    I agree to the Terms of Service and Privacy Policy *
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <span data-lang="form_consent">
+                                    I consent to my data being stored for application purposes *
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="saveDraft" data-lang="btn_save_draft">
+                            <i class="fas fa-save"></i> Save Draft
+                        </button>
+                        
+                        <button type="button" class="btn btn-secondary" id="previewApplication" data-lang="btn_preview">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        
+                        <button type="submit" class="btn btn-primary" id="submitApplication" data-lang="btn_submit">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Application Tips -->
+            <div class="application-tips">
+                <h3 data-lang="tips_title">Application Tips</h3>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <i class="fas fa-edit"></i>
+                        <h4 data-lang="tip1_title">Be Detailed</h4>
+                        <p data-lang="tip1_desc">Provide detailed answers about your character and experience.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-user-check"></i>
+                        <h4 data-lang="tip2_title">Be Honest</h4>
+                        <p data-lang="tip2_desc">Provide accurate information about your experience and availability.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-clock"></i>
+                        <h4 data-lang="tip3_title">Be Patient</h4>
+                        <p data-lang="tip3_desc">Applications are reviewed within 24-72 hours by our staff.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-question-circle"></i>
+                        <h4 data-lang="tip4_title">Need Help?</h4>
+                        <p data-lang="tip4_desc">Join our Discord and ask in the support channel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-lion"></i>
+                        <span>SIMBA<span class="highlight">.RP</span></span>
+                    </div>
+                    <p class="footer-description" data-lang="footer_desc">
+                        High quality FiveM RolePlay community
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-lang="footer_quick_links">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" data-lang="nav_home">Home</a></li>
+                        <li><a href="apply.html" data-lang="nav_apply">Apply</a></li>
+                        <li><a href="rules.html" data-lang="nav_rules">Rules</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-lang="footer_copyright">
+                    &copy; <span id="currentYear">2023</span> SIMBA.RP
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Preview -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-lang="preview_title">Application Preview</h3>
+                <button class="modal-close" id="closePreview">&times;</button>
+            </div>
+            <div class="modal-body" id="previewContent">
+                <!-- Preview content will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="editApplication" data-lang="btn_edit">Edit</button>
+                <button class="btn btn-primary" id="confirmSubmit" data-lang="btn_confirm">Confirm & Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="toast" id="successToast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span data-lang="toast_success">Application submitted successfully!</span>
+        </div>
+    </div>
+
+    <script>
+        // Character counter
+        const charConcept = document.getElementById('characterConcept');
+        const charCount = document.getElementById('charCount');
+        
+        charConcept.addEventListener('input', function() {
+            charCount.textContent = this.value.length;
+        });
+        
+        // Form submission
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle form submission here
+            document.getElementById('successToast').classList.add('show');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
+        });
+        
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

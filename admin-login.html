@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | SIMBA.RP</title>
+    
+    <!-- نفس الروابط كالصفحة الرئيسية -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <style>
+        .admin-login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(11, 18, 32, 0.95), rgba(11, 18, 32, 0.98)),
+                        url('assets/images/admin-bg.jpg') center/cover no-repeat;
+            padding: 20px;
+        }
+        
+        .admin-login-box {
+            background: rgba(22, 29, 47, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .admin-logo {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .admin-logo .highlight {
+            color: #FFC107;
+        }
+        
+        .admin-title {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .admin-subtitle {
+            text-align: center;
+            color: #b0b7c3;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #FFC107;
+            box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.1);
+        }
+        
+        .btn-admin {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #FFC107, #ff9800);
+            color: #0B1220;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-admin:hover {
+            background: linear-gradient(135deg, #ffb300, #f57c00);
+            transform: translateY(-2px);
+        }
+        
+        .error-message {
+            color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .security-notice {
+            text-align: center;
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .back-home {
+            display: block;
+            text-align: center;
+            color: #FFC107;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        
+        .back-home:hover {
+            text-decoration: underline;
+        }
+        
+        /* Captcha Styling */
+        .captcha-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .captcha-code {
+            font-family: 'Courier New', monospace;
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+            background: #000;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #FFC107;
+            font-weight: bold;
+            user-select: none;
+        }
+        
+        .captcha-refresh {
+            background: none;
+            border: none;
+            color: #FFC107;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .captcha-refresh:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-login-box">
+            <div class="admin-logo">
+                <i class="fas fa-shield-alt"></i> SIMBA<span class="highlight">.RP</span>
+                <div class="admin-subtitle">Admin Access Only</div>
+            </div>
+            
+            <h2 class="admin-title">Staff Portal</h2>
+            <p class="admin-subtitle">Enter security code to access admin panel</p>
+            
+            <div id="errorMessage" class="error-message">
+                Invalid access code. Please try again.
+            </div>
+            
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label class="form-label">Access Code</label>
+                    <input type="password" id="accessCode" class="form-input" 
+                           placeholder="Enter admin access code" required autocomplete="off">
+                </div>
+                
+                <!-- Captcha System -->
+                <div class="captcha-container">
+                    <div class="form-label">Security Verification</div>
+                    <div class="captcha-code" id="captchaCode">SIMBA</div>
+                    <input type="text" id="captchaInput" class="form-input" 
+                           placeholder="Enter the code above" required>
+                    <button type="button" class="captcha-refresh" id="refreshCaptcha">
+                        <i class="fas fa-redo"></i> Refresh Code
+                    </button>
+                </div>
+                
+                <button type="submit" class="btn-admin">
+                    <i class="fas fa-lock"></i> Access Admin Panel
+                </button>
+            </form>
+            
+            <div class="security-notice">
+                <i class="fas fa-info-circle"></i> This area is restricted to authorized staff only.
+                Unauthorized access attempts are logged.
+            </div>
+            
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // كود الوصول - يمكن تغييره
+        const ADMIN_CODES = [
+            "SIMBA2024",
+            "ADMIN1234",
+            "FIVEM2024",
+            "ROLEPLAY2024"
+        ];
+        
+        // توليد كابتشا عشوائي
+        function generateCaptcha() {
+            const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            let captcha = "";
+            for (let i = 0; i < 5; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('captchaCode').textContent = captcha;
+            return captcha;
+        }
+        
+        // التحقق من صحة الكود
+        function validateAccess(code, captchaInput, captchaCode) {
+            // التحقق من الكابتشا أولاً
+            if (captchaInput.toUpperCase() !== captchaCode) {
+                return { valid: false, message: "Security code incorrect" };
+            }
+            
+            // التحقق من كود الوصول
+            if (ADMIN_CODES.includes(code.toUpperCase())) {
+                return { valid: true };
+            }
+            
+            return { valid: false, message: "Invalid access code" };
+        }
+        
+        // عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentCaptcha = generateCaptcha();
+            const form = document.getElementById('adminLoginForm');
+            const errorDiv = document.getElementById('errorMessage');
+            
+            // تحديث الكابتشا
+            document.getElementById('refreshCaptcha').addEventListener('click', function() {
+                currentCaptcha = generateCaptcha();
+            });
+            
+            // معالجة تسجيل الدخول
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const accessCode = document.getElementById('accessCode').value;
+                const captchaInput = document.getElementById('captchaInput').value;
+                
+                const validation = validateAccess(accessCode, captchaInput, currentCaptcha);
+                
+                if (validation.valid) {
+                    // نجاح - تخزين الجلسة والانتقال
+                    localStorage.setItem('admin_authenticated', 'true');
+                    localStorage.setItem('admin_session_time', new Date().getTime());
+                    
+                    // إخفاء رسالة الخطأ
+                    errorDiv.style.display = 'none';
+                    
+                    // رسالة نجاح
+                    alert("Access granted! Redirecting to admin panel...");
+                    
+                    // الانتقال إلى صفحة الإدارة
+                    window.location.href = "admin-panel.html";
+                } else {
+                    // فشل - عرض خطأ
+                    errorDiv.textContent = validation.message;
+                    errorDiv.style.display = 'block';
+                    
+                    // هزاز لراحة المستخدم
+                    form.classList.add('shake');
+                    setTimeout(() => {
+                        form.classList.remove('shake');
+                    }, 500);
+                    
+                    // تحديث الكابتشا
+                    currentCaptcha = generateCaptcha();
+                    document.getElementById('captchaInput').value = '';
+                }
+            });
+            
+            // حماية ضد التكرار
+            let attempts = 0;
+            const maxAttempts = 3;
+            
+            // إضافة CSS للهز
+            const style = document.createElement('style');
+            style.textContent = `
+                .shake {
+                    animation: shake 0.5s;
+                }
+                @keyframes shake {
+                    0%, 100% {transform: translateX(0);}
+                    10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
+                    20%, 40%, 60%, 80% {transform: translateX(5px);}
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

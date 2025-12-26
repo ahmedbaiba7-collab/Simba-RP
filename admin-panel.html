@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | SIMBA.RP</title>
+    
+    <!-- نفس الروابط -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <style>
+        .admin-panel {
+            min-height: 100vh;
+            background: #0B1220;
+            color: #fff;
+        }
+        
+        .admin-header {
+            background: rgba(22, 29, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .admin-brand i {
+            color: #FFC107;
+            margin-right: 10px;
+        }
+        
+        .admin-user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            background: #FFC107;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: #0B1220;
+            font-weight: bold;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 68, 68, 0.2);
+        }
+        
+        .admin-content {
+            padding: 30px 0;
+        }
+        
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .admin-card {
+            background: rgba(22, 29, 47, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .admin-card:hover {
+            border-color: #FFC107;
+            transform: translateY(-5px);
+        }
+        
+        .admin-card h3 {
+            color: #FFC107;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-card h3 i {
+            margin-right: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFC107;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #b0b7c3;
+        }
+        
+        .admin-table {
+            width: 100%;
+            background: rgba(22, 29, 47, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .admin-table th {
+            background: rgba(255, 193, 7, 0.1);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #FFC107;
+        }
+        
+        .admin-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .status-online {
+            color: #4CAF50;
+        }
+        
+        .status-offline {
+            color: #f44336;
+        }
+        
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+        
+        .btn-warn {
+            background: rgba(255, 193, 7, 0.1);
+            color: #FFC107;
+        }
+        
+        .btn-danger {
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+        }
+        
+        .btn-success {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+        
+        /* رسالة عندما لا يكون المستخدم مسجلاً */
+        .login-required {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .login-required h2 {
+            color: #FFC107;
+            margin-bottom: 20px;
+        }
+        
+        .login-required p {
+            margin-bottom: 30px;
+            color: #b0b7c3;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-panel" id="adminPanel">
+        <!-- سيتم تحميل المحتوى هنا إذا كان المستخدم مصادقاً -->
+    </div>
+    
+    <!-- قالب رسالة الدخول المطلوب -->
+    <div id="loginRequired" class="login-required" style="display: none;">
+        <i class="fas fa-lock fa-3x" style="color: #FFC107; margin-bottom: 20px;"></i>
+        <h2>Authentication Required</h2>
+        <p>Please log in to access the admin panel</p>
+        <a href="admin-login.html" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i> Go to Login
+        </a>
+    </div>
+    
+    <script>
+        // التحقق من المصادقة
+        function checkAdminAuth() {
+            const authenticated = localStorage.getItem('admin_authenticated');
+            const sessionTime = localStorage.getItem('admin_session_time');
+            
+            if (!authenticated || authenticated !== 'true') {
+                return false;
+            }
+            
+            // التحقق من انتهاء الجلسة (8 ساعات)
+            const currentTime = new Date().getTime();
+            const sessionDuration = 8 * 60 * 60 * 1000; // 8 ساعات بالميلي ثانية
+            
+            if (currentTime - parseInt(sessionTime) > sessionDuration) {
+                // انتهت الجلسة
+                localStorage.removeItem('admin_authenticated');
+                localStorage.removeItem('admin_session_time');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // تسجيل الخروج
+        function logoutAdmin() {
+            localStorage.removeItem('admin_authenticated');
+            localStorage.removeItem('admin_session_time');
+            window.location.href = "admin-login.html";
+        }
+        
+        // تحميل لوحة الإدارة
+        function loadAdminPanel() {
+            const adminPanel = document.getElementById('adminPanel');
+            
+            if (!checkAdminAuth()) {
+                document.getElementById('loginRequired').style.display = 'flex';
+                adminPanel.innerHTML = '';
+                return;
+            }
+            
+            // محتوى لوحة الإدارة
+            adminPanel.innerHTML = `
+                <div class="admin-header">
+                    <div class="container">
+                        <div class="admin-nav">
+                            <div class="admin-brand">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>SIMBA<span style="color: #FFC107;">.RP</span> Admin</span>
+                            </div>
+                            
+                            <div class="admin-user">
+                                <div class="admin-avatar">
+                                    <i class="fas fa-user-secret"></i>
+                                </div>
+                                <div>
+                                    <div>Administrator</div>
+                                    <small style="color: #b0b7c3;">Staff Member</small>
+                                </div>
+                                <button class="logout-btn" onclick="logoutAdmin()">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-content">
+                    <div class="container">
+                        <h2 style="margin-bottom: 30px; color: #FFC107;">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </h2>
+                        
+                        <div class="admin-grid">
+                            <div class="admin-card">
+                                <h3><i class="fas fa-users"></i> Player Management</h3>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <span class="stat-number">142</span>
+                                        <span class="stat-label">Online Players</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">2,847</span>
+                                        <span class="stat-label">Total Players</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">12</span>
+                                        <span class="stat-label">New Today</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h3><i class="fas fa-server"></i> Server Status</h3>
+                                <div style="margin-top: 20px;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                        <div style="width: 12px; height: 12px; background: #4CAF50; border-radius: 50%; margin-right: 10px;"></div>
+                                        <span>Server: <strong style="color: #4CAF50;">ONLINE</strong></span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 12px; height: 12px; background: #4CAF50; border-radius: 50%; margin-right: 10px;"></div>
+                                        <span>Discord Bot: <strong style="color: #4CAF50;">ACTIVE</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h3><i class="fas fa-exclamation-triangle"></i> Recent Reports</h3>
+                                <div style="margin-top: 20px;">
+                                    <div style="background: rgba(255, 68, 68, 0.1); padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                                        <div style="font-weight: bold;">Player Report #487</div>
+                                        <small style="color: #b0b7c3;">10 minutes ago</small>
+                                    </div>
+                                    <div style="background: rgba(255, 193, 7, 0.1); padding: 10px; border-radius: 5px;">
+                                        <div style="font-weight: bold;">Bug Report #23</div>
+                                        <small style="color: #b0b7c3;">1 hour ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <h3><i class="fas fa-user-shield"></i> Staff Actions</h3>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Target</th>
+                                        <th>Staff Member</th>
+                                        <th>Time</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Warning Issued</td>
+                                        <td>Player_JohnDoe</td>
+                                        <td>Admin_Alex</td>
+                                        <td>2024-01-15 14:30</td>
+                                        <td>
+                                            <button class="action-btn btn-warn">View</button>
+                                            <button class="action-btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ban Applied</td>
+                                        <td>Player_Toxic</td>
+                                        <td>Mod_Sarah</td>
+                                        <td>2024-01-15 12:15</td>
+                                        <td>
+                                            <button class="action-btn btn-warn">View</button>
+                                            <button class="action-btn btn-success">Appeal</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kick Player</td>
+                                        <td>Player_AFK</td>
+                                        <td>Admin_Mike</td>
+                                        <td>2024-01-15 10:45</td>
+                                        <td>
+                                            <button class="action-btn btn-warn">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdminPanel();
+            
+            // حماية الصفحة من التخزين المؤقت
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    // الصفحة تم تحميلها من الكاش، تحقق من الجلسة
+                    if (!checkAdminAuth()) {
+                        window.location.href = "admin-login.html";
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

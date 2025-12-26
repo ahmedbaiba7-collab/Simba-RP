@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMBA.RP | Rules</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Scripts -->
+    <script defer src="js/lang.js"></script>
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-lion"></i>
+                    <span>SIMBA<span class="highlight">.RP</span></span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link" data-lang="nav_home">Home</a>
+                <a href="apply.html" class="nav-link" data-lang="nav_apply">Apply</a>
+                <a href="rules.html" class="nav-link active" data-lang="nav_rules">Rules</a>
+                <a href="admin.html" class="nav-link" data-lang="nav_admin">Admin</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="language-switcher" id="languageSwitcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
+                
+                <a href="#" class="btn-discord" data-lang="nav_discord">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Rules Header -->
+    <section class="rules-header">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title" data-lang="rules_main_title">Server Rules & Guidelines</h1>
+                <p class="page-subtitle" data-lang="rules_subtitle">
+                    To maintain a high-quality roleplay environment for all players
+                </p>
+            </div>
+            
+            <div class="rules-navigation">
+                <a href="#basic-rules" class="rule-nav-link active" data-lang="rule_nav_basic">Basic Rules</a>
+                <a href="#roleplay-rules" class="rule-nav-link" data-lang="rule_nav_roleplay">RolePlay Rules</a>
+                <a href="#community-rules" class="rule-nav-link" data-lang="rule_nav_community">Community Rules</a>
+                <a href="#penalties" class="rule-nav-link" data-lang="rule_nav_penalties">Penalties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Basic Rules -->
+    <section id="basic-rules" class="rules-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-lang="basic_rules_title">
+                    <i class="fas fa-exclamation-triangle"></i> Basic Rules
+                </h2>
+                <p class="section-subtitle" data-lang="basic_rules_desc">
+                    Fundamental rules that apply to all players at all times
+                </p>
+            </div>
+            
+            <div class="rules-category">
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-skull-crossbones"></i>
+                    </div>
+                    <h3 data-lang="rule_category_combat">Combat Rules</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">1.1</div>
+                                <h4 data-lang="rule_rdm_title">No Random Deathmatch (RDM)</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_rdm_desc">
+                                Killing players without valid roleplay reason is strictly prohibited.
+                                All hostile actions must have proper roleplay buildup.
+                            </p>
+                            <div class="rule-example">
+                                <strong data-lang="example_title">Example:</strong>
+                                <span data-lang="example_rdm">Shooting someone because they cut you off in traffic is RDM.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">1.2</div>
+                                <h4 data-lang="rule_vdm_title">No Vehicle Deathmatch (VDM)</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_vdm_desc">
+                                Using vehicles as weapons to kill or injure players is prohibited.
+                                Vehicles must be used realistically.
+                            </p>
+                        </div>
+                        
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">1.3</div>
+                                <h4 data-lang="rule_fearrp_title">Fear RolePlay (FearRP)</h4>
+                                <span class="rule-severity medium" data-lang="severity_medium">Medium</span>
+                            </div>
+                            <p data-lang="rule_fearrp_desc">
+                                When your life is threatened, you must act accordingly.
+                                You cannot fight back against overwhelming odds.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 data-lang="rule_category_character">Character Rules</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">2.1</div>
+                                <h4 data-lang="rule_character_title">Stay In Character</h4>
+                                <span class="rule-severity medium" data-lang="severity_medium">Medium</span>
+                            </div>
+                            <p data-lang="rule_character_desc">
+                                Always remain in character during roleplay sessions.
+                                Out of character talk should be kept to a minimum.
+                            </p>
+                        </div>
+                        
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">2.2</div>
+                                <h4 data-lang="rule_nlr_title">New Life Rule (NLR)</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_nlr_desc">
+                                After death, you cannot remember events leading to your death.
+                                You must wait 15 minutes before returning to the area.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RolePlay Rules -->
+    <section id="roleplay-rules" class="rules-section alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-lang="roleplay_rules_title">
+                    <i class="fas fa-theater-masks"></i> RolePlay Rules
+                </h2>
+                <p class="section-subtitle" data-lang="roleplay_rules_desc">
+                    Rules specific to roleplay scenarios and interactions
+                </p>
+            </div>
+            
+            <div class="rules-category">
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 data-lang="rule_category_metagaming">Metagaming</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">3.1</div>
+                                <h4 data-lang="rule_metagaming_title">No Metagaming</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_metagaming_desc">
+                                Using out-of-character information in-character is prohibited.
+                                This includes Discord, streams, and other external sources.
+                            </p>
+                            <div class="rule-example">
+                                <strong data-lang="example_title">Example:</strong>
+                                <span data-lang="example_metagaming">Using Discord to locate a player's in-game position.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <h3 data-lang="rule_category_powergaming">Powergaming</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">4.1</div>
+                                <h4 data-lang="rule_powergaming_title">No Powergaming</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_powergaming_desc">
+                                Forcing actions on other players without their consent is prohibited.
+                                All roleplay must be consensual.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3 data-lang="rule_category_communication">Communication</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">5.1</div>
+                                <h4 data-lang="rule_mic_title">Microphone Required</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_mic_desc">
+                                A working microphone is mandatory for all players.
+                                Text roleplay is not allowed for major interactions.
+                            </p>
+                        </div>
+                        
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">5.2</div>
+                                <h4 data-lang="rule_voip_title">Proper VOIP Usage</h4>
+                                <span class="rule-severity medium" data-lang="severity_medium">Medium</span>
+                            </div>
+                            <p data-lang="rule_voip_desc">
+                                Use voice chat appropriately. No screaming, loud music,
+                                or background noise that disrupts roleplay.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Rules -->
+    <section id="community-rules" class="rules-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-lang="community_rules_title">
+                    <i class="fas fa-users"></i> Community Rules
+                </h2>
+                <p class="section-subtitle" data-lang="community_rules_desc">
+                    Rules regarding community behavior and interactions
+                </p>
+            </div>
+            
+            <div class="rules-category">
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 data-lang="rule_category_respect">Respect & Behavior</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">6.1</div>
+                                <h4 data-lang="rule_respect_title">Respect All Players</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_respect_desc">
+                                Treat all players with respect regardless of differences.
+                                Harassment, discrimination, or hate speech will not be tolerated.
+                            </p>
+                        </div>
+                        
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">6.2</div>
+                                <h4 data-lang="rule_staff_title">Respect Staff Decisions</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_staff_desc">
+                                Always respect and follow staff decisions.
+                                If you disagree, use proper appeal channels.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 data-lang="rule_category_language">Language</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">7.1</div>
+                                <h4 data-lang="rule_english_title">English Only</h4>
+                                <span class="rule-severity medium" data-lang="severity_medium">Medium</span>
+                            </div>
+                            <p data-lang="rule_english_desc">
+                                Use English language in public channels for communication.
+                                Other languages may be used in private groups.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3 data-lang="rule_category_advertising">Advertising</h3>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item detailed">
+                            <div class="rule-header">
+                                <div class="rule-number">8.1</div>
+                                <h4 data-lang="rule_advertising_title">No Advertising</h4>
+                                <span class="rule-severity high" data-lang="severity_high">High</span>
+                            </div>
+                            <p data-lang="rule_advertising_desc">
+                                Advertising other servers, communities, or services is strictly prohibited.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Penalties -->
+    <section id="penalties" class="penalties-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-lang="penalties_title">
+                    <i class="fas fa-gavel"></i> Rule Violation Penalties
+                </h2>
+                <p class="section-subtitle" data-lang="penalties_subtitle">
+                    Consequences for violating server rules
+                </p>
+            </div>
+            
+            <div class="penalties-grid">
+                <div class="penalty-card warning">
+                    <div class="penalty-header">
+                        <h3 data-lang="penalty_warning">Warning</h3>
+                        <span class="penalty-level" data-lang="level_minor">Minor Infraction</span>
+                    </div>
+                    <ul class="penalty-list">
+                        <li data-lang="penalty_warning1">First-time minor rule violation</li>
+                        <li data-lang="penalty_warning2">Accidental rule break</li>
+                        <li data-lang="penalty_warning3">No previous violations</li>
+                    </ul>
+                </div>
+                
+                <div class="penalty-card kick">
+                    <div class="penalty-header">
+                        <h3 data-lang="penalty_kick">Kick</h3>
+                        <span class="penalty-level" data-lang="level_moderate">Moderate Infraction</span>
+                    </div>
+                    <ul class="penalty-list">
+                        <li data-lang="penalty_kick1">Repeated minor violations</li>
+                        <li data-lang="penalty_kick2">Disruptive behavior</li>
+                        <li data-lang="penalty_kick3">Failure to follow staff instructions</li>
+                    </ul>
+                </div>
+                
+                <div class="penalty-card tempban">
+                    <div class="penalty-header">
+                        <h3 data-lang="penalty_tempban">Temporary Ban</h3>
+                        <span class="penalty-level" data-lang="level_serious">Serious Infraction</span>
+                    </div>
+                    <ul class="penalty-list">
+                        <li data-lang="penalty_tempban1">Major rule violation (RDM/VDM)</li>
+                        <li data-lang="penalty_tempban2">Toxic behavior</li>
+                        <li data-lang="penalty_tempban3">Multiple kicks</li>
+                    </ul>
+                    <div class="penalty-duration">
+                        <span data-lang="duration">Duration:</span>
+                        <strong>1-30 days</strong>
+                    </div>
+                </div>
+                
+                <div class="penalty-card permaban">
+                    <div class="penalty-header">
+                        <h3 data-lang="penalty_permaban">Permanent Ban</h3>
+                        <span class="penalty-level" data-lang="level_severe">Severe Infraction</span>
+                    </div>
+                    <ul class="penalty-list">
+                        <li data-lang="penalty_permaban1">Extreme toxicity/harassment</li>
+                        <li data-lang="penalty_permaban2">Cheating/exploiting</li>
+                        <li data-lang="penalty_permaban3">Multiple temporary bans</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="penalties-info">
+                <div class="info-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h4 data-lang="appeals_title">Ban Appeals</h4>
+                    <p data-lang="appeals_desc">
+                        If you believe you were banned unfairly, you can submit an appeal
+                        through our Discord server within 7 days of the ban.
+                    </p>
+                    <a href="#" class="btn btn-outline" data-lang="appeals_btn">Submit Appeal</a>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h4 data-lang="clarification_title">Rule Clarification</h4>
+                    <p data-lang="clarification_desc">
+                        If you're unsure about any rule, ask staff for clarification
+                        before taking action. Ignorance is not an excuse.
+                    </p>
+                    <a href="#" class="btn btn-outline" data-lang="clarification_btn">Ask Staff</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Agreement -->
+    <section class="rules-agreement-section">
+        <div class="container">
+            <div class="agreement-card">
+                <h3 data-lang="agreement_title">Rules Agreement</h3>
+                <p data-lang="agreement_desc">
+                    By playing on SIMBA.RP, you agree to follow all server rules and guidelines.
+                    Violations may result in penalties as outlined above.
+                </p>
+                
+                <div class="agreement-actions">
+                    <div class="agreement-check">
+                        <input type="checkbox" id="rulesAgreement">
+                        <label for="rulesAgreement" data-lang="agreement_check">
+                            I have read and agree to all server rules
+                        </label>
+                    </div>
+                    
+                    <div class="agreement-buttons">
+                        <a href="apply.html" class="btn btn-primary" data-lang="agreement_apply">
+                            <i class="fas fa-user-check"></i> I Agree & Apply
+                        </a>
+                        <a href="index.html" class="btn btn-outline" data-lang="agreement_home">
+                            <i class="fas fa-home"></i> Return Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-lion"></i>
+                        <span>SIMBA<span class="highlight">.RP</span></span>
+                    </div>
+                    <p class="footer-description" data-lang="footer_desc">
+                        High quality FiveM RolePlay community
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-lang="footer_quick_links">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" data-lang="nav_home">Home</a></li>
+                        <li><a href="apply.html" data-lang="nav_apply">Apply</a></li>
+                        <li><a href="rules.html" data-lang="nav_rules">Rules</a></li>
+                        <li><a href="admin.html" data-lang="nav_admin">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-lang="footer_copyright">
+                    &copy; <span id="currentYear">2023</span> SIMBA.RP
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Rules Navigation Script -->
+    <script>
+        // Rules navigation highlighting
+        const ruleNavLinks = document.querySelectorAll('.rule-nav-link');
+        const ruleSections = document.querySelectorAll('.rules-section, .penalties-section');
+        
+        // Intersection Observer for rule sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    ruleNavLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        ruleSections.forEach(section => observer.observe(section));
+        
+        // Smooth scroll for rule navigation
+        ruleNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const headerHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Rules agreement checkbox
+        const rulesAgreement = document.getElementById('rulesAgreement');
+        const applyBtn = document.querySelector('.agreement-buttons .btn-primary');
+        
+        if (rulesAgreement && applyBtn) {
+            rulesAgreement.addEventListener('change', function() {
+                applyBtn.disabled = !this.checked;
+            });
+            
+            // Initially disable apply button
+            applyBtn.disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMBA.RP | High Quality FiveM RolePlay</title>
+    <meta name="description" content="Join SIMBA.RP for the best FiveM RolePlay experience. Immersive gameplay, active community, and professional staff.">
+    
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Scripts (deferred) -->
+    <script defer src="js/lang.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/server-status.js"></script>
+    
+    <style>
+        /* تأكد من تحميل الصور بشكل صحيح */
+        .hero {
+            background: 
+                linear-gradient(rgba(11, 18, 32, 0.9), rgba(11, 18, 32, 0.95)),
+                url('assets/images/hero-bg.jpg') center/cover no-repeat fixed;
+            
+            /* خلفية احتياطية إذا لم تحمل الصورة */
+            background-color: #0B1220;
+        }
+        
+        /* تأكد من تحميل الشعار */
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+               <a href="index.html" class="logo">
+                    <!-- استخدم صورتك الخاصة أو الأيقونة -->
+                    <img src="assets/images/logo.png" alt="SIMBA.RP Logo" class="logo-img">
+                    <span>SIMBA<span class="highlight">.RP</span></span>
+                
+                </a>
+                
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active" data-lang="nav_home">Home</a>
+                <a href="apply.html" class="nav-link" data-lang="nav_apply">Apply</a>
+                <a href="rules.html" class="nav-link" data-lang="nav_rules">Rules</a>
+                <a href="#features" class="nav-link" data-lang="nav_features">Features</a>
+                <a href="#community" class="nav-link" data-lang="nav_community">Community</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="language-switcher" id="languageSwitcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
+                
+                <a href="https://discord.gg/P8XGUVsY" class="btn-discord" data-lang="nav_discord" target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-discord"></i>
+                      <span>Discord</span>
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tag" data-lang="hero_tag">GTA V ROLEPLAY</span>
+                
+                <h1 class="hero-title" data-lang="hero_title">
+                    SIMBA<span class="highlight">.RP</span>
+                </h1>
+                
+                <p class="hero-subtitle" data-lang="hero_subtitle">
+                    Immerse yourself in our high-quality FiveM RolePlay experience. 
+                    Join a thriving community of roleplayers and create your story.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="apply.html" class="btn btn-primary" data-lang="hero_apply">
+                        <i class="fas fa-user-plus"></i> Apply Now
+                    <a href="https://discord.gg/P8XGUVsY" class="btn btn-outline" data-lang="hero_discord" target="_blank" rel="noopener noreferrer">
+                         <i class="fab fa-discord"></i> Join Discord
+                    </a>
+                </div>
+                
+                <!-- Server Status -->
+                <div class="server-status-wrapper">
+                    <div id="serverStatus" class="server-status">
+                        <div class="status-loading">
+                            <i class="fas fa-circle-notch fa-spin"></i>
+                            <span data-lang="status_loading">Checking server status...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="server-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="onlinePlayers">0</span>
+                            <span class="stat-label" data-lang="stat_players">Players Online</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="totalMembers">420+</span>
+                            <span class="stat-label" data-lang="stat_members">Community Members</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label" data-lang="stat_uptime">Server Uptime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <a href="#features" class="scroll-indicator" aria-label="Scroll down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-lion"></i>
+                        <span>SIMBA<span class="highlight">.RP</span></span>
+                    </div>
+                    <p class="footer-description" data-lang="footer_desc">
+                        High quality FiveM RolePlay community offering immersive gameplay, 
+                        custom content, and professional staff support.
+                    </p>
+                    
+                    <div class="social-links">
+                        <!-- روابط اجتماعية حقيقية -->
+                        <a href="https://discord.gg/P8XGUVsY" class="social-link" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="https://x.com/Simba_RP_" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCZ1f8s1teE-LBTWzuUIIDGQ" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://github.com/ahmedbaiba7-collab" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-lang="footer_quick_links">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" data-lang="nav_home">Home</a></li>
+                        <li><a href="apply.html" data-lang="nav_apply">Apply</a></li>
+                        <li><a href="rules.html" data-lang="nav_rules">Rules</a></li>
+                        <li><a href="admin.html" data-lang="nav_admin">Admin</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-lang="footer_resources">Resources</h4>
+                    <ul class="footer-links">
+                        <!-- روابط حقيقية للمصادر -->
+                        <li><a href="https://docs.fivem.net/docs/" data-lang="footer_guides" target="_blank" rel="noopener noreferrer">Guides</a></li>
+                        <li><a href="faq.html" data-lang="footer_faq">FAQ</a></li>
+                        <li><a href="support.html" data-lang="footer_support">Support</a></li>
+                        <li><a href="#server-status" data-lang="footer_status">Server Status</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-lang="footer_legal">Legal</h4>
+                    <ul class="footer-links">
+                        <!-- رواقع صفحات حقيقية -->
+                        <li><a href="terms.html" data-lang="footer_terms">Terms of Service</a></li>
+                        <li><a href="privacy.html" data-lang="footer_privacy">Privacy Policy</a></li>
+                        <li><a href="cookies.html" data-lang="footer_cookies">Cookie Policy</a></li>
+                        <li><a href="disclaimer.html" data-lang="footer_disclaimer">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-lang="footer_copyright">
+                    &copy; <span id="currentYear">2023</span> SIMBA.RP. All rights reserved.
+                    This is a FiveM roleplay community not affiliated with Rockstar Games.
+                </p>
+                <p class="footer-note" data-lang="footer_note">
+                    Made with <i class="fas fa-heart"></i> for the FiveM community
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- باقي الصفحة يبقى كما هو -->
+    <!-- ... -->
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // تحقق من تحميل الصور
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Checking images...');
+            
+            // تحقق من تحميل الخلفية
+            const bgImage = new Image();
+            bgImage.src = 'assets/images/hero-bg.jpg';
+            bgImage.onload = function() {
+                console.log('Background image loaded successfully');
+            };
+            bgImage.onerror = function() {
+                console.error('Failed to load background image');
+                // استخدم خلفية بديلة
+                document.querySelector('.hero').style.background = 
+                    'linear-gradient(rgba(11, 18, 32, 0.9), rgba(11, 18, 32, 0.95)), #0B1220';
+            };
+            
+            // تحقق من تحميل الشعار
+            const logoImage = new Image();
+            logoImage.src = 'assets/images/logo.png';
+            logoImage.onload = function() {
+                console.log('Logo image loaded successfully');
+            };
+            logoImage.onerror = function() {
+                console.error('Failed to load logo image');
+                // استخدم أيقونة بديلة
+                const logoElement = document.querySelector('.logo-img');
+                if (logoElement) {
+                    logoElement.replaceWith(document.createElement('i'));
+                    logoElement.className = 'fas fa-lion';
+                }
+            };
+        });
+    </script>
+        <!-- Community Section -->
+    <section class="community-section" id="community">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-lang="community_title">Our Growing Community</h2>
+                <p class="section-subtitle" data-lang="community_subtitle">
+                    Join thousands of players in our immersive roleplay world
+                </p>
+            </div>
+            
+            <div class="community-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-lang="community_stat1_title">Active Players</h3>
+                    <p class="stat-number" data-lang="community_stat1_value">500+</p>
+                    <p class="stat-desc" data-lang="community_stat1_desc">Daily active roleplayers</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-lang="community_stat2_title">Active Hours</h3>
+                    <p class="stat-number" data-lang="community_stat2_value">24/7</p>
+                    <p class="stat-desc" data-lang="community_stat2_desc">Round-the-clock roleplay</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 data-lang="community_stat3_title">Events Weekly</h3>
+                    <p class="stat-number" data-lang="community_stat3_value">15+</p>
+                    <p class="stat-desc" data-lang="community_stat3_desc">Community events hosted</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 data-lang="community_stat4_title">Staff Members</h3>
+                    <p class="stat-number" data-lang="community_stat4_value">30+</p>
+                    <p class="stat-desc" data-lang="community_stat4_desc">Dedicated support team</p>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <h3 class="testimonials-title" data-lang="testimonials_title">What Our Players Say</h3>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Alex Morgan</h4>
+                                <span data-lang="testimonial1_role">Police Department</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text" data-lang="testimonial1_text">
+                            "The most immersive roleplay experience I've had. The community is amazing and the staff is always helpful."
+                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Sarah Chen</h4>
+                                <span data-lang="testimonial2_role">Business Owner</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text" data-lang="testimonial2_text">
+                            "Running my own business in-game has been incredible. The economy system is realistic and engaging."
+                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Mohammed Al-Farsi</h4>
+                                <span data-lang="testimonial3_role">EMS Director</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text" data-lang="testimonial3_text">
+                            "As an Arabic speaker, I appreciate the RTL support and Arabic translations. Great for our community!"
+                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Join Section -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-lang="steps_title">How to Join</h2>
+                <p class="section-subtitle" data-lang="steps_subtitle">
+                    Get started in 3 easy steps
+                </p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 data-lang="step1_title">Join Discord</h3>
+                        <p data-lang="step1_desc">
+                            Join our Discord server to get access to announcements and community.
+                        </p>
+                        <a href="https://discord.gg/YOUR_CODE_HERE" class="step-link" data-lang="step1_link" target="_blank" rel="noopener noreferrer">
+                            Join Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 data-lang="step2_title">Read Rules</h3>
+                        <p data-lang="step2_desc">
+                            Read and understand our server rules to ensure quality roleplay.
+                        </p>
+                        <a href="rules.html" class="step-link" data-lang="step2_link">
+                            View Rules <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 data-lang="step3_title">Submit Application</h3>
+                        <p data-lang="step3_desc">
+                            Fill out our application form and wait for approval from our staff.
+                        </p>
+                        <a href="apply.html" class="step-link" data-lang="step3_link">
+                            Apply Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>     

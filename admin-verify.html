@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحقق من الهوية | SIMBA.RP</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FFC107;
+            --primary-dark: #ff9800;
+            --dark: #0B1220;
+            --darker: #070C16;
+            --light: #1A2238;
+            --text: #E0E0E0;
+            --success: #4CAF50;
+            --danger: #F44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 152, 0, 0.1) 0%, transparent 50%);
+        }
+        
+        .verify-container {
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .verify-card {
+            background: var(--darker);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .verify-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        .verify-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .verify-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary);
+        }
+        
+        .verify-icon i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        .verify-title {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        
+        .verify-subtitle {
+            color: var(--text);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .verify-form {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 193, 7, 0.05);
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            left: 15px;
+            top: 45px;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .captcha-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .captcha-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .captcha-code {
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            background: black;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--primary);
+            font-weight: bold;
+            user-select: none;
+        }
+        
+        .captcha-refresh {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .captcha-refresh:hover {
+            background: rgba(255, 193, 7, 0.2);
+        }
+        
+        .btn-verify {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 12px;
+            color: var(--dark);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-verify:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+        }
+        
+        .btn-verify:active {
+            transform: translateY(-1px);
+        }
+        
+        .error-message {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: var(--danger);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: shake 0.5s;
+        }
+        
+        .error-message i {
+            font-size: 1.2rem;
+        }
+        
+        .security-info {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: var(--text);
+            text-align: center;
+        }
+        
+        .security-info i {
+            color: var(--primary);
+            margin-left: 5px;
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .attempts-counter {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        
+        .attempts-counter span {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        @keyframes success {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 480px) {
+            .verify-card {
+                padding: 30px 20px;
+            }
+            
+            .verify-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .verify-icon i {
+                font-size: 2rem;
+            }
+            
+            .verify-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="verify-container">
+        <div class="verify-card">
+            <div class="verify-header">
+                <div class="verify-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h1 class="verify-title">التحقق من الهوية</h1>
+                <p class="verify-subtitle">يجب التحقق من هويتك قبل الوصول إلى لوحة الإدارة</p>
+            </div>
+            
+            <div id="errorMessage" class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>كلمة المرور أو كود التحقق غير صحيح</span>
+            </div>
+            
+            <form id="verifyForm" class="verify-form">
+                <div class="form-group">
+                    <label class="form-label">كود الدخول السري</label>
+                    <input type="password" 
+                           id="adminPassword" 
+                           class="form-input" 
+                           placeholder="أدخل الكود السري للإدارة"
+                           autocomplete="off"
+                           required>
+                    <button type="button" class="password-toggle" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                
+                <div class="captcha-container">
+                    <div class="captcha-header">
+                        <div class="form-label">تحقق من أنك لست روبوت</div>
+                        <button type="button" class="captcha-refresh" id="refreshCaptcha">
+                            <i class="fas fa-redo"></i> تحديث
+                        </button>
+                    </div>
+                    <div class="captcha-code" id="captchaDisplay">SIMBA</div>
+                    <input type="text" 
+                           id="captchaInput" 
+                           class="form-input" 
+                           placeholder="أدخل الكود الظاهر أعلاه"
+                           required>
+                </div>
+                
+                <div class="attempts-counter">
+                    محاولات متبقية: <span id="attemptsLeft">3</span>
+                </div>
+                
+                <button type="submit" class="btn-verify" id="verifyBtn">
+                    <i class="fas fa-lock"></i>
+                    التحقق والدخول
+                </button>
+            </form>
+            
+            <div class="security-info">
+                <i class="fas fa-info-circle"></i>
+                هذه الصفحة مخصصة فقط لأعضاء فريق الإدارة. جميع محاولات الدخول يتم تسجيلها.
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-right"></i>
+                العودة للصفحة الرئيسية
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // تعريف أكواد الدخول المسموحة (يمكن تغييرها)
+        const ADMIN_ACCESS_CODES = [
+            "SIMBA2024",      // المالك
+            "ADMIN1234",      // الأدمن الرئيسي
+            "STAFF5678",      // فريق الإدارة
+            "MODERATOR999",   // المشرفين
+            "FIVEM2024",      // كود عام
+            "ROLEPLAY888"     // كود احتياطي
+        ];
+        
+        // تعريف رموز الأدمن المسجلين (للتجربة)
+        const ADMIN_CREDENTIALS = {
+            "owner": {
+                name: "سيمبا أدمن",
+                code: "SIMBA2024",
+                role: "مالك السيرفر",
+                avatar: "س"
+            },
+            "admin": {
+                name: "أدمن رئيسي",
+                code: "ADMIN1234",
+                role: "أدمن",
+                avatar: "أ"
+            },
+            "staff": {
+                name: "فريق الإدارة",
+                code: "STAFF5678",
+                role: "مشرف",
+                avatar: "ف"
+            }
+        };
+        
+        // متغيرات النظام
+        let currentCaptcha = '';
+        let attempts = 0;
+        const MAX_ATTEMPTS = 3;
+        let isLocked = false;
+        let lockTimeout = null;
+        
+        // توليد كود تحقق عشوائي
+        function generateCaptcha() {
+            const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            currentCaptcha = captcha;
+            document.getElementById('captchaDisplay').textContent = captcha;
+            return captcha;
+        }
+        
+        // تبديل إظهار/إخفاء كلمة المرور
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('adminPassword');
+            const toggleIcon = document.getElementById('togglePassword').querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+            }
+        }
+        
+        // إظهار رسالة الخطأ
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.querySelector('span').textContent = message;
+            errorDiv.style.display = 'flex';
+            
+            // إضافة تأثير الهز
+            errorDiv.style.animation = 'none';
+            setTimeout(() => {
+                errorDiv.style.animation = 'shake 0.5s';
+            }, 10);
+            
+            // تحديث عداد المحاولات
+            attempts++;
+            document.getElementById('attemptsLeft').textContent = MAX_ATTEMPTS - attempts;
+            
+            // قفل النظام عند تجاوز المحاولات
+            if (attempts >= MAX_ATTEMPTS) {
+                lockSystem();
+            }
+        }
+        
+        // إخفاء رسالة الخطأ
+        function hideError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+        
+        // قفل النظام مؤقتاً
+        function lockSystem() {
+            isLocked = true;
+            const verifyBtn = document.getElementById('verifyBtn');
+            const formInputs = document.querySelectorAll('.form-input');
+            
+            // تعطيل النموذج
+            verifyBtn.disabled = true;
+            verifyBtn.innerHTML = '<i class="fas fa-lock"></i> النظام مقفل مؤقتاً';
+            verifyBtn.style.opacity = '0.6';
+            verifyBtn.style.cursor = 'not-allowed';
+            
+            formInputs.forEach(input => {
+                input.disabled = true;
+                input.placeholder = 'انتظر 5 دقائق...';
+            });
+            
+            // بدء العد التنازلي
+            let lockTime = 5 * 60; // 5 دقائق بالثواني
+            const lockInterval = setInterval(() => {
+                const minutes = Math.floor(lockTime / 60);
+                const seconds = lockTime % 60;
+                
+                verifyBtn.innerHTML = `<i class="fas fa-clock"></i> مقفل: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (lockTime <= 0) {
+                    clearInterval(lockInterval);
+                    unlockSystem();
+                }
+                
+                lockTime--;
+            }, 1000);
+        }
+        
+        // فتح النظام بعد انتهاء القفل
+        function unlockSystem() {
+            isLocked = false;
+            attempts = 0;
+            const verifyBtn = document.getElementById('verifyBtn');
+            const formInputs = document.querySelectorAll('.form-input');
+            
+            // تفعيل النموذج
+            verifyBtn.disabled = false;
+            verifyBtn.innerHTML = '<i class="fas fa-lock"></i> التحقق والدخول';
+            verifyBtn.style.opacity = '1';
+            verifyBtn.style.cursor = 'pointer';
+            
+            formInputs.forEach(input => {
+                input.disabled = false;
+                input.placeholder = input.id === 'adminPassword' ? 'أدخل الكود السري للإدارة' : 'أدخل الكود الظاهر أعلاه';
+            });
+            
+            document.getElementById('attemptsLeft').textContent = MAX_ATTEMPTS;
+            hideError();
+            generateCaptcha();
+        }
+        
+        // التحقق من صحة بيانات الدخول
+        function validateCredentials(password, captcha) {
+            // التحقق من الكابتشا أولاً
+            if (captcha.toUpperCase() !== currentCaptcha) {
+                return {
+                    valid: false,
+                    message: "كود التحقق غير صحيح"
+                };
+            }
+            
+            // التحقق من كود الدخول
+            if (!ADMIN_ACCESS_CODES.includes(password.toUpperCase())) {
+                return {
+                    valid: false,
+                    message: "كود الدخول غير صحيح"
+                };
+            }
+            
+            // تحديد نوع المستخدم
+            let userType = 'staff';
+            if (password.toUpperCase() === "SIMBA2024") userType = "owner";
+            else if (password.toUpperCase() === "ADMIN1234") userType = "admin";
+            
+            return {
+                valid: true,
+                userType: userType,
+                userData: ADMIN_CREDENTIALS[userType]
+            };
+        }
+        
+        // التحقق الناجح
+        function onVerificationSuccess(userData) {
+            // حفظ بيانات الجلسة
+            const sessionData = {
+                authenticated: true,
+                timestamp: new Date().getTime(),
+                user: userData,
+                sessionId: 'simba_' + Math.random().toString(36).substr(2, 9)
+            };
+            
+            localStorage.setItem('admin_session', JSON.stringify(sessionData));
+            
+            // تغيير زر التحقق
+            const verifyBtn = document.getElementById('verifyBtn');
+            verifyBtn.innerHTML = '<i class="fas fa-check"></i> تم التحقق بنجاح!';
+            verifyBtn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+            verifyBtn.style.animation = 'success 0.5s';
+            
+            // إعادة توجيه بعد 1.5 ثانية
+            setTimeout(() => {
+                window.location.href = "admin.html";
+            }, 1500);
+        }
+        
+        // عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // توليد كود التحقق الأولي
+            generateCaptcha();
+            
+            // إضافة event listeners
+            document.getElementById('togglePassword').addEventListener('click', togglePasswordVisibility);
+            document.getElementById('refreshCaptcha').addEventListener('click', generateCaptcha);
+            
+            // التحقق من وجود جلسة سابقة
+            const existingSession = localStorage.getItem('admin_session');
+            if (existingSession) {
+                const session = JSON.parse(existingSession);
+                const sessionAge = new Date().getTime() - session.timestamp;
+                const maxSessionAge = 8 * 60 * 60 * 1000; // 8 ساعات
+                
+                if (sessionAge < maxSessionAge && session.authenticated) {
+                    // الجلسة لا تزال نشطة، توجيه مباشر
+                    window.location.href = "admin.html";
+                } else {
+                    // انتهت الجلسة، حذفها
+                    localStorage.removeItem('admin_session');
+                }
+            }
+            
+            // معالجة النموذج
+            document.getElementById('verifyForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (isLocked) {
+                    showError('النظام مقفل مؤقتاً. حاول لاحقاً.');
+                    return;
+                }
+                
+                hideError();
+                
+                const password = document.getElementById('adminPassword').value;
+                const captcha = document.getElementById('captchaInput').value;
+                
+                const validation = validateCredentials(password, captcha);
+                
+                if (validation.valid) {
+                    onVerificationSuccess(validation.userData);
+                } else {
+                    showError(validation.message);
+                    // توليد كابتشا جديدة
+                    generateCaptcha();
+                    document.getElementById('captchaInput').value = '';
+                }
+            });
+            
+            // إضافة تأثيرات عند التركيز
+            const inputs = document.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+            });
+        });
+        
+        // حماية الصفحة من أدوات المطورين
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            // منع F12 و Ctrl+Shift+I و Ctrl+Shift+J و Ctrl+U
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                (e.ctrlKey && e.key === 'U')
+            ) {
+                e.preventDefault();
+                showError('هذا الإجراء غير مسموح');
+            }
+        });
+    </script>
+</body>
+</html>

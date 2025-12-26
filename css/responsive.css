@@ -1,0 +1,428 @@
+/* Responsive Design */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    h1 {
+        font-size: 4rem;
+    }
+    
+    .hero-title {
+        font-size: 5rem;
+    }
+}
+
+/* Medium screens (992px to 1199px) */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    .hero-title {
+        font-size: 4.5rem;
+    }
+}
+
+/* Tablets (768px to 991px) */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    /* Navigation */
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--bg-dark);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: var(--transition-normal);
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 1rem 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    /* Features */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Forms */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .application-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* Mobile phones (576px to 767px) */
+@media (max-width: 767px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+    
+    /* Hero */
+    .hero {
+        padding-top: 80px;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-tag {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    /* Features */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    /* Rules */
+    .rule-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .rule-number {
+        margin-bottom: 1rem;
+    }
+    
+    /* CTA */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Application */
+    .application-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .step {
+        justify-content: center;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Server Stats */
+    .server-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Modals */
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+    }
+}
+
+/* Small phones (up to 575px) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Navigation */
+    .nav-actions {
+        gap: 0.5rem;
+    }
+    
+    .language-switcher .lang-btn {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-discord span {
+        display: none;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-large {
+        padding: 12px 24px;
+    }
+    
+    /* Cards */
+    .card {
+        padding: 1rem;
+    }
+    
+    /* Forms */
+    .form-section {
+        padding: 1rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    /* Tables */
+    .table-container {
+        font-size: 0.9rem;
+    }
+    
+    th, td {
+        padding: 0.75rem;
+    }
+    
+    /* Toasts */
+    .toast {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+    
+/* Back to top */
+.back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    :root {
+        --primary: #0D2B6B;
+        --secondary: #C05621;
+        --text-light: #FFFFFF;
+        --text-gray: #CCCCCC;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .footer,
+    .back-to-top,
+    .btn,
+    .menu-toggle,
+    .language-switcher {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+    }
+    
+    a {
+        color: black !important;
+        text-decoration: underline;
+    }
+    
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    section {
+        padding: 1cm 0 !important;
+        page-break-inside: avoid;
+    }
+}
+
+/* Dark mode support (if system prefers) */
+@media (prefers-color-scheme: dark) {
+    /* Already dark by default, but can adjust further */
+    :root {
+        --bg-dark: #050A14;
+        --bg-darker: #02050A;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: 600px;
+    }
+    
+    .hero-content {
+        padding-top: 2rem;
+    }
+    
+    .scroll-indicator {
+        bottom: 1rem;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero {
+        background-size: cover;
+    }
+    
+    /* Ensure images are high resolution */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .nav-link,
+    .lang-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .form-group input,
+    .form-group select,
+        .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Larger hit areas for touch */
+    .social-link {
+        width: 48px;
+        height: 48px;
+    }
+
+    .menu-toggle {
+        padding: 12px;
+    }
+
+    /* Foldable devices */
+    @media (max-width: 280px) {
+        /* أضف قواعد CSS للأجهزة القابلة للطي هنا */
+        .page {
+            padding: 15px 10px;
+        }
+        h1 {
+            font-size: 1.5rem;
+        }
+        .btn-primary {
+            padding: 15px;
+            font-size: 1rem;
+        }
+    }
+}
+}
